@@ -20,7 +20,6 @@ from textwrap import dedent
 from typing import Any
 
 from agno.agent import Agent
-from agno.models.openai import OpenAIChat
 from agno.models.openrouter import OpenRouter
 from bindu.penguin.bindufy import bindufy
 from dotenv import load_dotenv
