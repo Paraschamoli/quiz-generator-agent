@@ -1,0 +1,257 @@
+id: quiz-generator-v1
+name: quiz-generator
+version: 1.0.0
+author: paras@getbindu.com
+
+# Description
+description: |
+  Generates educational quizzes based on user requirements including topic, difficulty level, question types, and learning objectives.
+  Creates structured quizzes with multiple choice, true/false, and short answer questions optimized for learning outcomes.
+
+# Tags and Modes
+tags:
+  - education
+  - quiz-generation
+  - assessment
+  - learning
+  - curriculum
+  - educational-content
+  - pedagogy
+
+input_modes:
+  - text/plain
+  - application/json
+
+output_modes:
+  - text/plain
+  - application/json
+  - text/markdown
+
+# Example Queries
+examples:
+  - "Create a 10-question quiz on World War II history at medium difficulty"
+  - "Generate a quiz about Python programming with 5 multiple choice and 3 true/false questions"
+  - "Make an easy quiz on basic chemistry concepts for 5th graders"
+  - "Design a hard biology quiz focusing on cellular respiration"
+  - "Create a mixed difficulty quiz on American literature with 15 questions"
+
+# Detailed Capabilities
+capabilities_detail:
+  primary_capability:
+    supported: true
+    description: "Creates educational quizzes with customizable parameters"
+    features:
+      - "Generates multiple choice, true/false, and short answer questions"
+      - "Adjusts difficulty levels (easy, medium, hard, mixed)"
+      - "Customizes question count and quiz structure"
+      - "Includes detailed answer explanations and learning objectives"
+      - "Supports various academic subjects and topics"
+    limitations: "Dependent on LLM knowledge base; cannot verify external facts in real-time"
+
+  secondary_capability:
+    supported: true
+    description: "Provides quiz statistics and educational metadata"
+    features:
+      - "Question type distribution analysis"
+      - "Difficulty level breakdown"
+      - "Estimated completion time"
+      - "Learning objectives alignment"
+      - "Answer key generation"
+
+# Requirements
+requirements:
+  packages:
+    - agno>=2.2.0
+    - bindu>=2026.1.7
+    - openai>=1.60.0
+    - python-dotenv>=1.0.1
+  system:
+    - "LLM API access (OpenAI or OpenRouter)"
+  min_memory_mb: 256
+  external_services:
+    - OpenAI API
+    - OpenRouter API
+
+# Performance Metrics
+performance:
+  avg_processing_time_ms: 2000
+  avg_time_per_question_ms: 200
+  max_concurrent_requests: 10
+  memory_per_request_mb: 128
+  timeout_seconds: 60
+  max_questions_per_quiz: 50
+  scalability: horizontal
+
+# Tool Restrictions
+allowed_tools:
+  - Generate
+  - Analyze
+  - Create
+
+# Rich Documentation
+documentation:
+  overview: |
+    Generates educational quizzes tailored to user specifications.
+    Creates engaging, pedagogically sound assessments that promote learning and knowledge retention.
+    Supports various question formats and difficulty levels for different educational contexts.
+
+  use_cases:
+    when_to_use:
+      - "Create quizzes for classroom teaching"
+      - "Generate practice assessments for students"
+      - "Design quizzes for online learning platforms"
+      - "Develop educational content for training programs"
+      - "Create knowledge checks for professional development"
+
+    when_not_to_use:
+      - "Real-time testing or proctored exams"
+      - "Highly specialized technical certification"
+      - "Live competitive quiz events"
+      - "Fact-checking or verification tasks"
+
+  input_structure: |
+    Accepts quiz generation requests in JSON or text format:
+
+    {
+      "topic": "Subject or topic name",
+      "difficulty": "easy|medium|hard|mixed",
+      "num_questions": 10,
+      "question_types": ["multiple_choice", "true_false", "short_answer"],
+      "grade_level": "elementary|middle|high_school|college",
+      "time_limit": 30,
+      "learning_objectives": ["objective1", "objective2"]
+    }
+
+    Constraints:
+    - Max topic length: 200 characters
+    - Max questions per quiz: 50
+    - Timeout: 60 seconds
+    - Language: English primary
+
+  output_format: |
+    Returns structured quiz with questions, answers, and metadata:
+
+    Quiz Structure:
+    - QUIZ_TITLE: Generated quiz title
+    - OVERVIEW: Topic description and objectives
+    - METADATA: Difficulty, question count, estimated time
+    - QUESTIONS: Array of question objects with:
+      - question_text: The question
+      - type: multiple_choice|true_false|short_answer
+      - difficulty: easy|medium|hard
+      - options: Array of answer choices (for multiple choice)
+      - correct_answer: The right answer
+      - explanation: Detailed explanation
+    - STATISTICS: Question type distribution
+    - ANSWER_KEY: Complete answer reference
+    - LEARNING_OBJECTIVES: Educational goals met
+
+  error_handling:
+    - "Invalid topic: Requests clarification or suggests alternatives"
+    - "Unsupported difficulty: Defaults to medium and notifies user"
+    - "Question generation failure: Provides partial quiz with explanation"
+    - "API rate limits: Suggests simpler requests or queuing"
+
+  examples:
+    - title: "World History Quiz"
+      input:
+        topic: "World War II"
+        difficulty: "medium"
+        num_questions: 10
+        question_types: ["multiple_choice", "true_false"]
+      output:
+        quiz_title: "World War II: Key Events and Concepts"
+        questions: [...]
+        statistics:
+          processing_time_ms: 1500
+          total_questions: 10
+          difficulty_distribution: {"easy": 3, "medium": 5, "hard": 2}
+
+    - title: "Python Programming Quiz"
+      input:
+        topic: "Python basics"
+        difficulty: "mixed"
+        num_questions: 8
+        grade_level: "college"
+      output:
+        quiz_title: "Introduction to Python Programming"
+        questions: [...]
+        metadata:
+          estimated_time: 20
+          learning_objectives: ["Understand basic Python syntax", "Apply programming concepts"]
+
+  best_practices:
+    for_developers:
+      - "Validate input parameters before quiz generation"
+      - "Implement question diversity checking"
+      - "Cache frequently requested quiz topics"
+      - "Monitor quiz quality and user feedback"
+      - "Balance question types for engagement"
+
+    for_orchestrators:
+      - "Route quiz generation requests to this agent"
+      - "Chain with content validation agents"
+      - "Adjust timeouts based on question complexity"
+      - "Use difficulty parameters for adaptive learning"
+      - "Monitor quiz usage patterns for curriculum insights"
+
+  installation: |
+    Required packages:
+    pip install agno bindu openai python-dotenv
+
+    Environment variables:
+    OPENAI_API_KEY
+    OPENROUTER_API_KEY  # Alternative to OpenAI
+
+  versioning:
+    - version: "1.0.0"
+      date: "2026-01-11"
+      changes: "Initial release with quiz generation, multiple question types, and difficulty scaling"
+
+# Assessment fields for skill negotiation
+assessment:
+  keywords:
+    - quiz
+    - test
+    - assessment
+    - questions
+    - education
+    - learning
+    - exam
+    - educational
+    - pedagogy
+    - curriculum
+
+  specializations:
+    - domain: education_assessment
+      confidence_boost: 0.4
+    - domain: curriculum_design
+      confidence_boost: 0.3
+    - domain: educational_technology
+      confidence_boost: 0.2
+
+  anti_patterns:
+    - "real-time exam"
+    - "proctored test"
+    - "certification exam"
+    - "live quiz competition"
+    - "fact checking"
+    - "verification"
+    - "real-time data"
+
+  complexity_indicators:
+    simple:
+      - "basic quiz"
+      - "simple questions"
+      - "easy topic"
+      - "few questions"
+    medium:
+      - "standard quiz"
+      - "mixed difficulty"
+      - "multiple types"
+      - "educational content"
+    complex:
+      - "advanced quiz"
+      - "complex topics"
+      - "many questions"
+      - "specialized subject"

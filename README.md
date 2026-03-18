@@ -5,7 +5,7 @@
 <h1 align="center">quiz-generator-agent</h1>
 
 <p align="center">
-  <strong>AI Quiz Generator Agent for Educational Content Creation</strong>
+  <strong>AI-Powered Quiz Generator for Educational Content Creation</strong>
 </p>
 
 <p align="center">
@@ -21,12 +21,13 @@
 
 ## 📖 Overview
 
-A Bindu AI agent for intelligent task handling. Built on the [Bindu Agent Framework](https://github.com/getbindu/bindu) for the Internet of Agents.
+An AI-powered quiz generator agent built on the [Bindu Agent Framework](https://github.com/getbindu/bindu) for the Internet of Agents. Creates educational quizzes with customizable topics, difficulty levels, and question types.
 
 **Key Capabilities:**
-- 🔍 [Add your key capabilities here]
-- ✅ [Add another capability]
-- 🚨 [Add another capability]
+- 🎯 **Custom Quiz Generation**: Create quizzes on any topic with specified difficulty levels
+- 📚 **Multiple Question Types**: Multiple choice, true/false, and short answer questions
+- 🎓 **Educational Focus**: Designed for optimal learning outcomes with detailed explanations
+- ⚙️ **Flexible Parameters**: Customize question count, difficulty, and educational objectives
 
 ---
 
@@ -93,34 +94,77 @@ gh repo create Paraschamoli/quiz-generator-agent --public --source=. --remote=or
 ### Example Queries
 
 ```bash
-# Example query 1
-"[Add example query here]"
+# Generate a CBSE Class 12th History quiz
+"Generate a CBSE Class 12th History quiz with 5 questions at medium difficulty"
 
-# Example query 2
-"[Add another example]"
+# Create a custom quiz on any topic
+"Create an easy quiz on photosynthesis with 5 questions"
+
+# Specify difficulty and question types
+"Make a hard biology quiz focusing on cellular respiration"
+
+# Mixed difficulty with custom count
+"Generate a mixed difficulty test on American literature with 15 questions"
 ```
 
 ### Input Formats
 
 **Plain Text:**
 ```
-[Describe expected input format]
+Generate a [difficulty] quiz on [topic] with [number] questions
+Example: "Create an easy quiz on World War II history with 10 questions"
 ```
 
 **JSON:**
 ```json
 {
-  "content": "[example content]",
-  "focus": "[example focus]"
+  "topic": "CBSE Class 12th History",
+  "difficulty": "medium",
+  "num_questions": 5,
+  "question_types": ["multiple_choice", "true_false"],
+  "grade_level": "high_school"
 }
 ```
 
 ### Output Structure
 
-The agent returns structured output with:
-- **[Output Component 1]**: Description
-- **[Output Component 2]**: Description
-- **[Output Component 3]**: Description
+The agent returns structured quiz output with:
+- **Quiz Title**: Generated title based on topic
+- **Quiz Overview**: Description and learning objectives
+- **Questions**: Formatted with options (a, b, c, d) for multiple choice
+- **Answer Key**: Complete answers with detailed explanations
+- **Quiz Statistics**: Distribution of question types and difficulty
+- **Learning Objectives**: Educational goals achieved
+
+### Sample Output
+
+```markdown
+# CBSE Class 12th History: Key Concepts Quiz 📝
+
+## Quiz Overview
+A comprehensive quiz covering key concepts from CBSE Class 12th History syllabus.
+
+**Difficulty Level:** medium
+**Number of Questions:** 5
+**Estimated Time:** 15 minutes
+
+### Question 1: Which of the following was a major factor in the decline of the Mughal Empire?
+**Type:** multiple_choice
+**Difficulty:** medium
+
+**Options:**
+a) Economic prosperity and strong central administration
+b) Wars of succession, administrative inefficiency, and external invasions
+c) Religious harmony and cultural development
+d) Technological advancements in agriculture
+
+**Correct Answer:** b
+**Explanation:** The Mughal Empire declined due to frequent wars of succession...
+
+## Answer Key
+1. b) Wars of succession, administrative inefficiency, and external invasions
+2. ...
+```
 
 ---
 
@@ -340,5 +384,6 @@ uvx cookiecutter https://github.com/getbindu/create-bindu-agent.git
   <a href="https://discord.gg/3w5zuYUuwt">💬 Join Discord</a> •
   <a href="https://bindus.directory">🌐 Agent Directory</a>
 </p>
-#   q u i z - g e n e r a t o r - a g e n t  
+#   q u i z - g e n e r a t o r - a g e n t 
+ 
  
