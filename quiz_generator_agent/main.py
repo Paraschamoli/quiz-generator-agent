@@ -17,7 +17,7 @@ import sys
 import traceback
 from pathlib import Path
 from textwrap import dedent
-from typing import Any
+from typing import Any, cast
 
 from agno.agent import Agent
 from agno.models.openrouter import OpenRouter
@@ -46,7 +46,7 @@ def load_config() -> dict[str, Any]:
         if config_path.exists():
             try:
                 with open(config_path) as f:
-                    return json.load(f)
+                    return cast(dict[str, Any], json.load(f))
             except (PermissionError, json.JSONDecodeError) as e:
                 print(f"⚠️  Error reading {config_path}: {type(e).__name__}")
                 continue
@@ -229,7 +229,7 @@ async def cleanup() -> None:
     print("🧹 Cleaning up Quiz Generator Agent resources...")
 
 
-def main():
+def main() -> None:
     """Run the main entry point for the Quiz Generator Agent."""
     parser = argparse.ArgumentParser(description="Bindu Quiz Generator Agent")
     parser.add_argument(
