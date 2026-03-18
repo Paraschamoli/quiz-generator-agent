@@ -205,7 +205,7 @@ async def run_agent(messages: list[dict[str, str]]) -> Any:
         raise RuntimeError(error_msg)
 
     # Run the agent and get response
-    return await agent.arun(messages)  # type: ignore[invalid-await]
+    return await agent.arun(messages)
 
 
 async def handler(messages: list[dict[str, str]]) -> Any:
