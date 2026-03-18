@@ -33,7 +33,7 @@ _initialized = False
 _init_lock = asyncio.Lock()
 
 
-def load_config() -> dict:
+def load_config() -> dict[str, Any]:
     """Load agent configuration from project root."""
     # Try multiple possible locations for agent_config.json
     possible_paths = [
